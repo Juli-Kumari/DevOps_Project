@@ -20,6 +20,12 @@ Github Actions
 1. workflow-dispatch ----> Allows you to run this workflow manually from the Actions tab
 2. issues  ----> tab present in GITHUB.
 
-## Contexts
---> Contexts are away to access information about workflow runs, runner environment, jobs & steps.
+### Notes:-  By default each job runs in parallel.
 
+## Contexts
+--> Contexts are a way to access information about workflow runs, runner environment, jobs & steps.
+
+## Jobs in GIthub Actions
+--> A workflow runs is made up of one or more jobs, which run in parallel by default. To run jobs sequentially, you can define dependencies on other jobs using the needs keyword
+
+--> You have the liberty to run each job in different host.

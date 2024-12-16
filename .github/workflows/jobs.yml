@@ -1,11 +1,11 @@
-name: context-demo
+name: context-demo-jobs
 
 on:
   workflow_dispatch:
     inputs:
       text:
         description: 'enter the word you want to print'
-        default: 'Hello'
+        default: 'Hello Moon'
         required: true  # mandatory parameter (true is assign here that means)
         type: string
 
@@ -15,6 +15,11 @@ env:
 
 jobs:
   contexts-demo: # job 1
+    timeout-minutes: 5 #set the maximum time to run this job
+    continue-on-error: false # this failure() , iff runs when set continue-on-error: false .
+    # if continue-on-error: true , then this failure will not runs.
+    container:
+      image: selenium-standalone-chrome:latest
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
@@ -36,4 +41,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo 'Job 2 executed after Job 1'
+
+  job3:
+    runs-on: ubuntu-latest
+    if: ${{ always() }} #job 3 always run
+    needs: [context-demo]
+    steps:
+      - run: echo 'job 3'
+  
+  job4:
+    runs-on: ubuntu-latest
+    #job 4 runs when any failure is happend in the context-demo job.
+    # this failure() , iff runs when set continue-on-error: false .
+    # if continue-on-error: true , then this failure will not runs.
+    if: ${{ failure() }} 
+    needs: [context-demo]
+    steps:
+      - run: echo 'job 4'
 
