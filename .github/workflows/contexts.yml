@@ -1,4 +1,4 @@
-name: context demo
+name: contexts-demo
 
 on:
   workflow_dispatch:
