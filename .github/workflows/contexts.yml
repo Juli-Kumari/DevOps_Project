@@ -34,4 +34,6 @@ jobs:
   contexts-demo2: # job 2
     needs: [contexts-demo] # dependent on 1st job
     runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Job 2 executed after Job 1'
 
