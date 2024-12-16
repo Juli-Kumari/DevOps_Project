@@ -19,4 +19,7 @@ Github Actions
 -> Go to ACTION tab inside the GITHUB ----> to create a pipeline.
 1. workflow-dispatch ----> Allows you to run this workflow manually from the Actions tab
 2. issues  ----> tab present in GITHUB.
-3. 
+
+## Contexts
+--> Contexts are away to access information about workflow runs, runner environment, jobs & steps.
+
