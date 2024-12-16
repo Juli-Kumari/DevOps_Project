@@ -15,7 +15,7 @@ env:
 
 jobs:
   contexts-demo: # job 1
-    runs-on: ${{matix.os}}
+    runs-on: ${{matrix.os}}
     strategy:
       matrix:
         os: [ubuntu-latest]
