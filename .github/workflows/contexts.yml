@@ -1,4 +1,4 @@
-name: contexts-demo
+name: context-demo
 
 on:
   workflow_dispatch:
@@ -14,13 +14,12 @@ env:
   website: 'tetsing mini bytes'
 
 jobs:
-  contexts-dmeo: # job 1
+  contexts-demo: # job 1
     runs-on: ${{matix.os}}
     strategy:
       matrix:
         os: [ubuntu-latest]
     steps:
-
       - run: echo ${{ inputs.text }}
       - run: echo ${{ github.event.inputs.text }}
       - run: echo ${{ github.actor }}
@@ -32,7 +31,7 @@ jobs:
         env:
           firstName: 'Testing' #local environment variable 
   
-  contexts-dmeo2: # job 2
-    needs: [contexts-dmeo] # dependent on 1st job
+  contexts-demo2: # job 2
+    needs: [contexts-demo] # dependent on 1st job
     runs-on: ubuntu-latest
 
